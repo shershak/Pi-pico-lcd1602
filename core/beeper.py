@@ -89,9 +89,10 @@ class Beeper:
             self.current_volume_level -= 1
 
     def play_melody(self, melody):
-        self.melody = melody
-        self.current_note_index = 0
-        self._play_next_note(None)
+        if self.current_volume_level:
+          self.melody = melody
+          self.current_note_index = 0
+          self._play_next_note(None)
 
     def _play_next_note(self, t):
         if self.current_note_index < len(self.melody):
